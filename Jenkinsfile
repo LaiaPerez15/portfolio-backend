@@ -1,10 +1,16 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/LaiaPerez15/portfolio-backend.git'
+            }
+        }
+        stage('List files') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'ls -la backend/ || echo "backend directory not found"'
             }
         }
         stage('Validate PHP') {
